@@ -106,11 +106,6 @@ export default function Dashboard(props) {
                 }}>
                     用户总数
                   </h2>
-                  <p className="text-slate-500 text-xs" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
-                    aa_user 集合记录统计
-                  </p>
                 </div>
                 <div className="p-2 bg-orange-500/10 rounded-lg">
                   <Users className="w-6 h-6 text-orange-500" />
@@ -156,11 +151,6 @@ export default function Dashboard(props) {
                 }}>
                     真实用户
                   </h2>
-                  <p className="text-slate-500 text-xs" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
-                    isVirtual 为 false 或不存在
-                  </p>
                 </div>
                 <div className="p-2 bg-emerald-500/10 rounded-lg">
                   <UserCheck className="w-6 h-6 text-emerald-500" />
@@ -206,11 +196,6 @@ export default function Dashboard(props) {
                 }}>
                     虚拟用户
                   </h2>
-                  <p className="text-slate-500 text-xs" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
-                    isVirtual 为 true
-                  </p>
                 </div>
                 <div className="p-2 bg-amber-500/10 rounded-lg">
                   <UserX className="w-6 h-6 text-amber-500" />
