@@ -451,41 +451,6 @@ export default function Dashboard(props) {
             </div>
           </div>
 
-          {/* Info Card */}
-          <div className="col-span-12 lg:col-span-6">
-            <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6">
-              <div className="flex items-center space-x-3 mb-4">
-                <Activity className="w-5 h-5 text-slate-400" />
-                <h3 className="text-sm font-semibold text-slate-300" style={{
-                fontFamily: 'Space Mono, monospace'
-              }}>
-                  数据源信息
-                </h3>
-              </div>
-              
-              <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-slate-700/50">
-                  <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>集合名称</span>
-                  <span className="text-slate-300 text-sm font-mono">aa_user</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-slate-700/50">
-                  <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>数据类型</span>
-                  <span className="text-slate-300 text-sm font-mono">NoSQL</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>更新时间</span>
-                  <span className="text-slate-300 text-sm font-mono">实时</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Placeholder for Future Stats */}
           <div className="col-span-12 lg:col-span-6">
             <div className="bg-slate-800/20 backdrop-blur-sm border border-slate-700/30 rounded-2xl p-6 border-dashed">
