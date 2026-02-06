@@ -1,14 +1,12 @@
 // @ts-ignore;
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
-import { Users, TrendingUp, Activity, Database, UserCheck, UserX, FolderKanban, Receipt, Home, DollarSign } from 'lucide-react';
-// @ts-ignore;
+import { Users, TrendingUp, Activity, Database, UserCheck, UserX, FolderKanban, Receipt, Home, DollarSign } from 'lucide-react'; // @ts-ignore;
 import { useToast } from '@/components/ui';
-
 export default function Dashboard(props) {
   const {
-    toast
-  } = useToast();
+    toast } =
+  useToast();
   const [userCount, setUserCount] = useState(0);
   const [realUserCount, setRealUserCount] = useState(0);
   const [virtualUserCount, setVirtualUserCount] = useState(0);
@@ -27,23 +25,23 @@ export default function Dashboard(props) {
       const db = tcb.database();
 
       // 获取用户总数
-      const totalResult = await db.collection('aa_user').count();
-      if (totalResult && totalResult.total !== undefined) {
+      // 获取用户总数
+      const totalResult = await db.collection('aa_user').count();if (totalResult && totalResult.total !== undefined) {
         setUserCount(totalResult.total);
       } else {
         setUserCount(0);
       }
 
       // 获取真实用户数量（isVirtual 为 false 或不存在该字段）
-      const realUserResult = await db.collection('aa_user').where({
-        $or: [{
-          isVirtual: false
-        }, {
+      // 获取真实用户数量（isVirtual 为 false 或不存在该字段）
+      const realUserResult = await db.collection('aa_user').where({ $or: [{
+          isVirtual: false },
+        {
           isVirtual: {
-            $exists: false
-          }
-        }]
-      }).count();
+            $exists: false } }] }).
+
+
+      count();
       if (realUserResult && realUserResult.total !== undefined) {
         setRealUserCount(realUserResult.total);
       } else {
@@ -51,9 +49,9 @@ export default function Dashboard(props) {
       }
 
       // 获取虚拟用户数量（isVirtual 为 true）
-      const virtualUserResult = await db.collection('aa_user').where({
-        isVirtual: true
-      }).count();
+      // 获取虚拟用户数量（isVirtual 为 true）
+      const virtualUserResult = await db.collection('aa_user').where({ isVirtual: true }).
+      count();
       if (virtualUserResult && virtualUserResult.total !== undefined) {
         setVirtualUserCount(virtualUserResult.total);
       } else {
@@ -61,32 +59,32 @@ export default function Dashboard(props) {
       }
 
       // 获取项目总数
-      const projectResult = await db.collection('aa_project').count();
-      if (projectResult && projectResult.total !== undefined) {
+      // 获取项目总数
+      const projectResult = await db.collection('aa_project').count();if (projectResult && projectResult.total !== undefined) {
         setProjectCount(projectResult.total);
       } else {
         setProjectCount(0);
       }
 
       // 获取账单总数
-      const billResult = await db.collection('aa_bill').count();
-      if (billResult && billResult.total !== undefined) {
+      // 获取账单总数
+      const billResult = await db.collection('aa_bill').count();if (billResult && billResult.total !== undefined) {
         setBillCount(billResult.total);
       } else {
         setBillCount(0);
       }
 
       // 获取家庭总数
-      const familyResult = await db.collection('aa_family').count();
-      if (familyResult && familyResult.total !== undefined) {
+      // 获取家庭总数
+      const familyResult = await db.collection('aa_family').count();if (familyResult && familyResult.total !== undefined) {
         setFamilyCount(familyResult.total);
       } else {
         setFamilyCount(0);
       }
 
       // 获取汇率总数
-      const currencyRateResult = await db.collection('aa_currency_rate').count();
-      if (currencyRateResult && currencyRateResult.total !== undefined) {
+      // 获取汇率总数
+      const currencyRateResult = await db.collection('aa_currency_rate').count();if (currencyRateResult && currencyRateResult.total !== undefined) {
         setCurrencyRateCount(currencyRateResult.total);
       } else {
         setCurrencyRateCount(0);
@@ -96,8 +94,8 @@ export default function Dashboard(props) {
       toast({
         title: '获取数据失败',
         description: error.message || '无法获取用户统计数据',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
       setUserCount(0);
       setRealUserCount(0);
       setVirtualUserCount(0);
@@ -119,14 +117,14 @@ export default function Dashboard(props) {
                 <Database className="w-6 h-6 text-white" />
               </div>
               <h1 className="text-2xl font-bold text-white" style={{
-              fontFamily: 'Space Mono, monospace'
-            }}>
-                统计面板
-              </h1>
+              fontFamily: 'Space Mono, monospace' }}>
+              AA小计统计面板
+
+            </h1>
             </div>
             <div className="text-slate-400 text-sm" style={{
-            fontFamily: 'JetBrains Mono, monospace'
-          }}>
+            fontFamily: 'JetBrains Mono, monospace' }}>
+
               {new Date().toLocaleDateString('zh-CN')}
             </div>
           </div>
@@ -142,8 +140,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     用户总数
                   </h2>
                 </div>
@@ -156,25 +154,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {userCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       位用户
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-orange-500" />
                 <span>实时数据统计</span>
               </div>
@@ -187,8 +185,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     真实用户
                   </h2>
                 </div>
@@ -201,25 +199,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {realUserCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       位用户
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-emerald-500" />
                 <span>真实用户统计</span>
               </div>
@@ -232,8 +230,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     虚拟用户
                   </h2>
                 </div>
@@ -246,25 +244,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {virtualUserCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       位用户
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-amber-500" />
                 <span>虚拟用户统计</span>
               </div>
@@ -277,8 +275,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     项目总数
                   </h2>
                 </div>
@@ -291,25 +289,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {projectCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       个项目
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-blue-500" />
                 <span>项目统计</span>
               </div>
@@ -322,8 +320,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     账单总数
                   </h2>
                 </div>
@@ -336,25 +334,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {billCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       笔账单
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-rose-500" />
                 <span>账单统计</span>
               </div>
@@ -367,8 +365,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     家庭总数
                   </h2>
                 </div>
@@ -381,25 +379,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {familyCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       个家庭
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-cyan-500" />
                 <span>家庭统计</span>
               </div>
@@ -412,8 +410,8 @@ export default function Dashboard(props) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-slate-300 mb-1" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                     汇率总数
                   </h2>
                 </div>
@@ -426,25 +424,25 @@ export default function Dashboard(props) {
                 {loading ? <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 border-3 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-slate-400 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>加载中...</span>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  加载中...</span>
                   </div> : <>
                     <span className="text-4xl font-bold text-white" style={{
-                  fontFamily: 'Space Mono, monospace'
-                }}>
+                  fontFamily: 'Space Mono, monospace' }}>
+
                       {currencyRateCount.toLocaleString()}
                     </span>
                     <span className="text-slate-500 text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+
                       条汇率
                     </span>
                   </>}
               </div>
 
               <div className="flex items-center space-x-2 text-slate-400 text-xs" style={{
-              fontFamily: 'JetBrains Mono, monospace'
-            }}>
+              fontFamily: 'JetBrains Mono, monospace' }}>
+
                 <TrendingUp className="w-3 h-3 text-violet-500" />
                 <span>汇率统计</span>
               </div>
@@ -457,11 +455,11 @@ export default function Dashboard(props) {
               <div className="flex items-center justify-center h-32 text-slate-500">
                 <div className="text-center">
                   <p className="text-sm" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>更多统计指标</p>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  更多统计指标</p>
                   <p className="text-xs text-slate-600 mt-1" style={{
-                  fontFamily: 'JetBrains Mono, monospace'
-                }}>待扩展...</p>
+                  fontFamily: 'JetBrains Mono, monospace' }}>
+                  待扩展...</p>
                 </div>
               </div>
             </div>
